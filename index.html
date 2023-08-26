@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Meta-->
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="keywords" content="Hangman Game, HTML5 , CSS3 , JS" />
+    <meta name="description" content="Hangman Game with HTML5 , CSS3 and JS" />
+    <meta name="author" content="Khazri" />
+    <!--Favicon-->
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/5088/5088077.png"
+      type="image/x-icon"
+    />
+    <title>Hangman</title>
+    <!--CSS Link-->
+    <link rel="stylesheet" href="style.css" />
+    <!--Font Awesome CDN-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="container">
+      <h2><span>h</span>angman Game</h2>
+      <h3 class="category">Word From Category : <span></span></h3>
+    </header>
+    <main class="container">
+      <section class="hangman-part1">
+        <section class="man-box">
+          <div class="the-draw">
+            <div class="the-stand"></div>
+            <div class="the-hang"></div>
+            <div class="the-rope"></div>
+            <div class="the-man">
+              <div class="the-head"></div>
+              <div class="the-body"></div>
+              <div class="the-hands"></div>
+              <div class="the-legs"></div>
+            </div>
+          </div>
+        </section>
+        <section class="letters-box"></section>
+      </section>
+      <section class="hangman-part2">
+        <section class="word"></section>
+      </section>
+
+      <div class="game-alert"></div>
+      <div class="bg-alert"></div>
+      <!--Audios-->
+      <audio
+        src="audios/different.wav"
+        preload="auto"
+        id="different-letter"
+      ></audio>
+      <audio src="audios/same.wav" preload="auto" id="same-letter"></audio>
+      <audio src="audios/win.wav" preload="auto" id="win"></audio>
+      <audio src="audios/lose.wav" preload="auto" id="lose"></audio>
+    </main>
+
+    <!--Link Js-->
+    <script src="main.js"></script>
+  </body>
+</html>

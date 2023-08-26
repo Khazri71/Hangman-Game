@@ -1,0 +1,410 @@
+/*Font*/
+@import url("https://fonts.googleapis.com/css2?family=Grandstander:wght@200;300;400;500;600&display=swap");
+/*Variables*/
+:root {
+  --main-color-bg-1: #1a237e;
+  --main-color-bg-2: #3f51b5;
+  --main-color-bg-span: #fdd835;
+  --main-color-text-span: #fff;
+  --main-color-text: #050608;
+  --main-color-bg-result: #eee;
+  --main-margin: 10px;
+  --main-padding: 10px;
+  --main-border-radius: 15px;
+  --main-border-radius-percent: 50%;
+}
+/*HTML*/
+html {
+  font-size: 16px;
+}
+/*All*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*Body*/
+body {
+  font-family: "Grandstander", cursive;
+  background-color: var(--main-color-bg-1);
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 80px;
+  margin-top: calc(var(--main-margin) + var(--main-margin) / 2) !important;
+}
+header h2 {
+  color: var(--main-color-bg-span);
+  font-size: 1.3rem;
+}
+header h2 > span {
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+header h3.category {
+  color: var(--main-color-text-span);
+}
+header h3.category span {
+  background-color: var(--main-color-bg-span);
+  padding: calc(var(--main-padding) - 2px) calc(var(--main-padding) + 3px);
+  border-radius: calc(var(--main-border-radius) / 3);
+}
+main {
+  width: 100%;
+  height: calc(100vh - 95px);
+}
+main .hangman-part1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+main .hangman-part1 .man-box,
+main .hangman-part1 .letters-box {
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+  height: 400px;
+  margin-top: calc(var(--main-margin) * 3);
+  padding-top: calc(var(--main-padding) * 3);
+}
+main .hangman-part1 .man-box {
+  background-color: var(--main-color-bg-result);
+  margin-right: var(--main-margin);
+}
+main .hangman-part1 .letters-box {
+  background-color: var(--main-color-bg-2);
+  margin-left: var(--main-margin);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  padding: calc(var(--main-padding) * 2) calc(var(--main-padding) * 5);
+}
+main .hangman-part1 .letters-box .letter {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  background-color: var(--main-color-bg-span);
+  color: var(--main-color-text-span);
+  margin: var(--main-margin);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: var(--main-border-radius);
+  cursor: pointer;
+  margin-bottom: 0;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+main .hangman-part1 .letters-box .letter:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.clicked-letter {
+  opacity: 0.6;
+  pointer-events: none;
+}
+main .hangman-part2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 80px;
+  margin-top: calc(var(--main-margin) * 3);
+}
+main .hangman-part2 .word span.guess-letter {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: var(--main-color-bg-result);
+  padding: calc(var(--main-padding) * 2 + var(--main-padding) / 2);
+  margin-left: var(--main-margin);
+  color: var(--main-color-text);
+  position: relative;
+  border-radius: var(--main-border-radius);
+}
+header,
+main .hangman-part1 .man-box,
+main .hangman-part1 .letters-box,
+main .hangman-part2 {
+  border-radius: var(--main-border-radius);
+}
+main .hangman-part1 .man-box .the-draw {
+  position: relative;
+  width: 50%;
+  height: 90%;
+  margin: auto;
+}
+/*******Start Hangman*******/
+main .hangman-part1 .man-box .the-draw.fail-1 .the-stand {
+  /**/
+  display: block;
+}
+main .hangman-part1 .man-box .the-draw.fail-2 .the-hang {
+  /**/
+  display: block;
+}
+main .hangman-part1 .man-box .the-draw.fail-3 .the-rope {
+  /**/
+  display: block;
+}
+main .hangman-part1 .man-box .the-draw.fail-4 .the-man .the-head {
+  /**/
+  display: block;
+}
+main .hangman-part1 .man-box .the-draw.fail-5 .the-man .the-body {
+  /**/
+  display: block;
+}
+main .hangman-part1 .man-box .the-draw.fail-6 .the-man .the-hands {
+  /**/
+  display: block;
+}
+main .hangman-part1 .man-box .the-draw.fail-7 .the-man .the-legs {
+  /**/
+  display: block;
+}
+/*******End Hangman*******/
+main .hangman-part1 .man-box .the-draw .the-stand {
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-stand {
+  position: absolute;
+  width: 80px;
+  height: 5px;
+  background-color: var(--main-color-text);
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+main .hangman-part1 .man-box .the-draw .the-hang {
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-hang::before {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 301px;
+  background-color: var(--main-color-text);
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+main .hangman-part1 .man-box .the-draw .the-hang::after {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 5px;
+  background-color: var(--main-color-text);
+  left: 60%;
+  -webkit-transform: translateX(-60%);
+  -ms-transform: translateX(-60%);
+  transform: translateX(-60%);
+  top: 22px;
+}
+main .hangman-part1 .man-box .the-draw .the-rope {
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-rope::before {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 40px;
+  background-color: var(--main-color-text);
+  top: 22px;
+  right: 95px;
+}
+main .hangman-part1 .man-box .the-draw .the-rope::after {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: var(--main-border-radius-percent);
+  border: 5px dotted var(--main-color-text);
+  left: 57%;
+  top: 18%;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-head {
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-head {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--main-border-radius-percent);
+  border: 5px solid var(--main-color-text);
+  left: 60.5%;
+  top: 23%;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-body {
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-body {
+  position: absolute;
+  width: 5px;
+  height: 70px;
+  background-color: var(--main-color-text);
+  top: 117px;
+  right: 95px;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-hands {
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-hands::before {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 5px;
+  background-color: var(--main-color-text);
+  left: 54%;
+  top: 150px;
+  -webkit-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-hands::after {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 5px;
+  background-color: var(--main-color-text);
+  left: 66%;
+  top: 150px;
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-legs {
+  /**/
+  display: none;
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-legs::before {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 5px;
+  background-color: var(--main-color-text);
+  left: 64%;
+  top: 197px;
+  -webkit-transform: rotate(51deg);
+  -ms-transform: rotate(51deg);
+  transform: rotate(51deg);
+}
+main .hangman-part1 .man-box .the-draw .the-man .the-legs::after {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 5px;
+  background-color: var(--main-color-text);
+  right: 30%;
+  top: 197px;
+  -webkit-transform: rotate(-51deg);
+  -ms-transform: rotate(-51deg);
+  transform: rotate(-51deg);
+}
+.empty-span::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 5px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: var(--main-color-bg-2) !important;
+}
+.bg-alert {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-color-bg-1);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: none;
+}
+i {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  color: var(--main-color-text-span);
+  z-index: 100;
+  width: 100px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.game-alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: var(--main-color-bg-1);
+  width: 50%;
+  height: 40%;
+  border-radius: var(--main-border-radius);
+  z-index: 2;
+  text-align: center;
+  display: none;
+}
+.game-alert p:first-child {
+  color: var(--main-color-text-span);
+  margin-top: calc(var(--main-margin) * 10);
+  font-size: 2.5rem;
+}
+.game-alert p:first-child > i {
+  margin: auto;
+  left: 2%;
+  font-size: 3rem;
+}
+.game-alert p:last-child,
+pre {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background-color: var(--main-color-bg-span);
+  color: var(--main-color-text-span);
+  text-align: center;
+  max-width: 450px;
+  margin-top: calc(var(--main-margin) * 2);
+  padding: calc(var(--main-padding) + var(--main-padding) / 2);
+  border-radius: var(--main-border-radius);
+}
